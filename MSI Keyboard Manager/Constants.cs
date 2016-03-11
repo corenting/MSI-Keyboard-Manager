@@ -15,7 +15,7 @@
             White
         };
 
-        public enum Levels
+        public enum Intensities
         {
             High,
             Med,
@@ -36,7 +36,8 @@
             Gaming,
             Breathe,
             Audio,
-            Wave
+            Wave,
+            DualColor
         }
     }
 }
