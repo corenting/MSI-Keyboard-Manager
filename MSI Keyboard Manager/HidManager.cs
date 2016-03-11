@@ -4,16 +4,15 @@ using HidSharp;
 
 namespace MSI_Keyboard_Manager
 {
-    class HidManager
+    internal class HidManager
     {
-        private HidStream _stream;
-        private HidDevice _device;
+        private readonly HidStream _stream;
 
         public HidManager()
         {
             var loader = new HidDeviceLoader();
-            _device = loader.GetDevices(0x1770, 0xff00).First();
-            _device.TryOpen(out _stream);
+            var device = loader.GetDevices(0x1770, 0xff00).First();
+            device.TryOpen(out _stream);
         }
 
         public void SetColor(Constants.Regions region, Constants.Colors color, Constants.Intensities intensity)
@@ -28,12 +27,14 @@ namespace MSI_Keyboard_Manager
             _stream.SetFeature(array);
         }
 
-        public void SetDualColorMode(Constants.Intensities intensity, Tuple<Constants.Colors, Constants.Colors> leftColors,
-             Tuple<Constants.Colors, Constants.Colors> middleColors, Tuple<Constants.Colors, Constants.Colors> rightColors,  int speed)
+        public void SetDualColorMode(Constants.Intensities intensity,
+            Tuple<Constants.Colors, Constants.Colors> leftColors,
+            Tuple<Constants.Colors, Constants.Colors> middleColors,
+            Tuple<Constants.Colors, Constants.Colors> rightColors, int speed)
         {
-            SendCommandForDualModeRegion(Constants.Regions.Left, (byte) leftColors.Item1, (byte)leftColors.Item2,
+            SendCommandForDualModeRegion(Constants.Regions.Left, (byte) leftColors.Item1, (byte) leftColors.Item2,
                 (byte) intensity, (byte) speed);
-            SendCommandForDualModeRegion(Constants.Regions.Middle, (byte) middleColors.Item1, (byte)middleColors.Item2,
+            SendCommandForDualModeRegion(Constants.Regions.Middle, (byte) middleColors.Item1, (byte) middleColors.Item2,
                 (byte) intensity, (byte) speed);
             SendCommandForDualModeRegion(Constants.Regions.Right, (byte) rightColors.Item1, (byte) rightColors.Item2,
                 (byte) intensity, (byte) speed);
@@ -62,9 +63,7 @@ namespace MSI_Keyboard_Manager
             SendCommand(67, (byte) (Constants.Regions.Left + modifier), firstColor, intensity);
             SendCommand(67, (byte) (Constants.Regions.Middle + modifier), secondColor, intensity);
             SendCommand(67, (byte) (Constants.Regions.Right + modifier), speed, speed, speed);
-
         }
-
 
         private void SendCommand(byte command, byte areaOrMode, byte color, byte intensity, byte last = 0)
         {

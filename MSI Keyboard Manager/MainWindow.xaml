@@ -1,0 +1,15 @@
+﻿<Window x:Class="MSI_Keyboard_Manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MSI_Keyboard_Manager"
+        mc:Ignorable="d"
+        Initialized="MainWindow_OnInitialized"
+        Title="MSI Keyboard Manager" Height="350" Width="525">
+    <Grid>
+
+        <Label x:Name="LabelMode" Content="Mode:" Margin="10,10,0,0" HorizontalAlignment="Left" Width="43" RenderTransformOrigin="0.513,1.405" Height="26" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ComboBoxMode" Margin="58,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="450"/>
+    </Grid>
+</Window>
