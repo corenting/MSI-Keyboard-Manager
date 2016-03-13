@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:MSI_Keyboard_Manager"
         mc:Ignorable="d"
         Initialized="MainWindow_OnInitialized"
-        Title="MSI Keyboard Manager" Height="437.6" Width="562">
+        Title="MSI Keyboard Manager" Height="507.2" Width="562">
     <Grid>
         <Label x:Name="LabelMode" Content="Mode:" Margin="10,10,0,0" HorizontalAlignment="Left" Width="43" RenderTransformOrigin="0.513,1.405" Height="26" VerticalAlignment="Top"/>
         <ComboBox x:Name="ComboBoxMode"  VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,36,10.4,0"/>
-        <GroupBox x:Name="groupBoxLeft" Header="Left" Margin="10,63,0,0" VerticalAlignment="Top" Height="335" HorizontalAlignment="Left" Width="175">
+        <GroupBox x:Name="groupBoxLeft" Header="Left" Margin="10,133,0,0" VerticalAlignment="Top" Height="335" HorizontalAlignment="Left" Width="175">
             <Grid HorizontalAlignment="Left" Height="315" Margin="10,10,-3.4,-12.2" VerticalAlignment="Top" Width="155">
                 <Button x:Name="buttonRedHigh"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBF000A"/>
                 <Button x:Name="buttonRedMed"  HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE00112"/>
@@ -44,7 +44,7 @@
                 <Button x:Name="buttonLight"  HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBoxMiddle" Header="Middle" HorizontalAlignment="Left" Margin="190,63,0,0" VerticalAlignment="Top" Width="175" Height="335">
+        <GroupBox x:Name="groupBoxMiddle" Header="Middle" HorizontalAlignment="Left" Margin="190,133,0,0" VerticalAlignment="Top" Width="175" Height="335">
             <Grid HorizontalAlignment="Left" Height="315" Margin="10,10,-3.4,-12.2" VerticalAlignment="Top" Width="155">
                 <Button x:Name="buttonRedHigh1"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBF000A"/>
                 <Button x:Name="buttonRedMed1"  HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE00112"/>
@@ -78,7 +78,7 @@
                 <Button x:Name="buttonLight1"  HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBoxRight" Header="Right" HorizontalAlignment="Left" Margin="370,63,0,0" VerticalAlignment="Top" Width="175" Height="335">
+        <GroupBox x:Name="groupBoxRight" Header="Right" HorizontalAlignment="Left" Margin="370,133,0,0" VerticalAlignment="Top" Width="175" Height="335">
             <Grid HorizontalAlignment="Left" Height="315" Margin="10,10,-3.4,-12.2" VerticalAlignment="Top" Width="155">
                 <Button x:Name="buttonRedHigh2"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBF000A"/>
                 <Button x:Name="buttonRedMed2"  HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE00112"/>
@@ -112,5 +112,7 @@
                 <Button x:Name="buttonLight2"  HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}"/>
             </Grid>
         </GroupBox>
+        <Label x:Name="labelSpeed" Content="Speed:" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.971,0.578"/>
+        <TextBox x:Name="textBoxSpeed" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.121,0.104"/>
     </Grid>
 </Window>
