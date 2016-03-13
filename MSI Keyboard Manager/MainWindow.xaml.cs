@@ -40,8 +40,7 @@ namespace MSI_Keyboard_Manager
             _hidManager = new HidManager();
             var normal = new Tuple<Constants.Colors, Constants.Colors>(Constants.Colors.Blue, Constants.Colors.Red);
             var inverted = new Tuple<Constants.Colors, Constants.Colors>(Constants.Colors.Red, Constants.Colors.Blue);
-
-            _hidManager.SetDualColorMode(Constants.Intensities.High, normal, inverted, normal, 2);
+            _hidManager.SetComplexMode(Constants.Modes.DualColor, Constants.Intensities.High, normal, inverted, normal, 2);
         }
     }
 }
