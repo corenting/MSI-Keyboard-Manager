@@ -3,116 +3,118 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MSI_Keyboard_Manager"
         mc:Ignorable="d"
         Initialized="MainWindow_OnInitialized"
-        Title="MSI Keyboard Manager" Height="507.2" Width="562">
+        Title="MSI Keyboard Manager" Height="507.2" Width="562" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="LabelMode" Content="Mode:" Margin="10,10,0,0" HorizontalAlignment="Left" Width="43" RenderTransformOrigin="0.513,1.405" Height="26" VerticalAlignment="Top"/>
         <ComboBox x:Name="ComboBoxMode"  VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,36,10.4,0"/>
-        <GroupBox x:Name="groupBoxLeft" Header="Left" Margin="10,133,0,0" VerticalAlignment="Top" Height="335" HorizontalAlignment="Left" Width="175">
+        <GroupBox x:Name="GroupBoxLeft" Header="Left (primary)" Margin="10,133,0,0" VerticalAlignment="Top" Height="335" HorizontalAlignment="Left" Width="175">
             <Grid HorizontalAlignment="Left" Height="315" Margin="10,10,-3.4,-12.2" VerticalAlignment="Top" Width="155">
-                <Button x:Name="buttonRedHigh"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBF000A"/>
-                <Button x:Name="buttonRedMed"  HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE00112"/>
-                <Button x:Name="buttonRedLow"  HorizontalAlignment="Left" Margin="68,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE7492C"/>
-                <Button x:Name="buttonRedLight"  HorizontalAlignment="Left" Margin="97,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFEE835D"/>
-                <Button x:Name="buttonOrangeHigh"  HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFC45500"/>
-                <Button x:Name="buttonOrangeMed"  HorizontalAlignment="Left" Margin="39,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF29300"/>
-                <Button x:Name="buttonOrangeLow"  HorizontalAlignment="Left" Margin="68,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF6AA3C"/>
-                <Button x:Name="buttonOrangeLight"  HorizontalAlignment="Left" Margin="97,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF9C06F"/>
-                <Button x:Name="buttonYellowHigh"  HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFD6C700"/>
-                <Button x:Name="buttonYellowMed"  HorizontalAlignment="Left" Margin="39,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFFF100"/>
-                <Button x:Name="buttonYellowLow"  HorizontalAlignment="Left" Margin="68,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFEF67B"/>
-                <Button x:Name="buttonYellowLight"  HorizontalAlignment="Left" Margin="97,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFFF9B1"/>
-                <Button x:Name="buttonGreenHigh"  HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF6BA01B"/>
-                <Button x:Name="buttonGreenMed"  HorizontalAlignment="Left" Margin="39,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF85C024"/>
-                <Button x:Name="buttonGreenLow"  HorizontalAlignment="Left" Margin="68,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFA2CC4F"/>
-                <Button x:Name="buttonGreenLight"  HorizontalAlignment="Left" Margin="97,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBAD87B"/>
-                <Button x:Name="buttonSkyHigh"  HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF008CBC"/>
-                <Button x:Name="buttonSkyMed"  HorizontalAlignment="Left" Margin="39,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF21B5E5"/>
-                <Button x:Name="buttonSkyLow"  HorizontalAlignment="Left" Margin="68,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF66C2EE"/>
-                <Button x:Name="buttonSkyLight"  HorizontalAlignment="Left" Margin="97,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF87C9ED"/>
-                <Button x:Name="buttonBlueHigh"  HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF00347F"/>
-                <Button x:Name="buttonBlueMed"  HorizontalAlignment="Left" Margin="39,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF00529F"/>
-                <Button x:Name="buttonBlueLow"  HorizontalAlignment="Left" Margin="68,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF2F62A4"/>
-                <Button x:Name="buttonBlueLight"  HorizontalAlignment="Left" Margin="97,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF647EB5"/>
-                <Button x:Name="buttonPurpleHigh"  HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF3B0F6C"/>
-                <Button x:Name="buttonPurpleMed"  HorizontalAlignment="Left" Margin="39,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF67187C"/>
-                <Button x:Name="buttonPurpleLow"  HorizontalAlignment="Left" Margin="68,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF824798"/>
-                <Button x:Name="buttonPurpleLight"  HorizontalAlignment="Left" Margin="97,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF9E73B0"/>
-                <Button x:Name="buttonDark"  HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="Black"/>
-                <Button x:Name="buttonLight"  HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}"/>
+                <Button x:Name="ButtonRedHighLeft" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBF000A" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonRedMedLeft" HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE00112" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonRedLowLeft" HorizontalAlignment="Left" Margin="68,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE7492C" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonRedLightLeft" HorizontalAlignment="Left" Margin="97,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFEE835D" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOrangeHighLeft" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFC45500" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOrangeMedLeft" HorizontalAlignment="Left" Margin="39,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF29300" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOrangeLowLeft" HorizontalAlignment="Left" Margin="68,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF6AA3C" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOrangeLightLeft" HorizontalAlignment="Left" Margin="97,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF9C06F" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonYellowHighLeft" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFD6C700" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonYellowMedLeft" HorizontalAlignment="Left" Margin="39,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFFF100" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonYellowLowLeft" HorizontalAlignment="Left" Margin="68,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFEF67B" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonYellowLightLeft" HorizontalAlignment="Left" Margin="97,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFFF9B1" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonGreenHighLeft" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF6BA01B" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonGreenMedLeft" HorizontalAlignment="Left" Margin="39,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF85C024" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonGreenLowLeft" HorizontalAlignment="Left" Margin="68,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFA2CC4F" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonGreenLightLeft" HorizontalAlignment="Left" Margin="97,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBAD87B" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonSkyHighLeft" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF008CBC" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonSkyMedLeft" HorizontalAlignment="Left" Margin="39,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF21B5E5" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonSkyLowLeft" HorizontalAlignment="Left" Margin="68,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF66C2EE" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonSkyLightLeft" HorizontalAlignment="Left" Margin="97,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF87C9ED" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonBlueHighLeft" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF00347F" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonBlueMedLeft" HorizontalAlignment="Left" Margin="39,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF00529F" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonBlueLowLeft" HorizontalAlignment="Left" Margin="68,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF2F62A4" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonBlueLightLeft" HorizontalAlignment="Left" Margin="97,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF647EB5" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPurpleHighLeft" HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF3B0F6C" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPurpleMedLeft" HorizontalAlignment="Left" Margin="39,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF67187C" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPurpleLowLeft" HorizontalAlignment="Left" Margin="68,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF824798" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPurpleLightLeft" HorizontalAlignment="Left" Margin="97,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF9E73B0" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonDarkLeft" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="Black" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonLightLeft" HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPageLeft" Content="Secondary color" HorizontalAlignment="Left" Margin="39,285,0,0" VerticalAlignment="Top" Width="106" Click="OnPageChanged" Visibility="Hidden"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBoxMiddle" Header="Middle" HorizontalAlignment="Left" Margin="190,133,0,0" VerticalAlignment="Top" Width="175" Height="335">
+        <GroupBox x:Name="GroupBoxMiddle" Header="Middle (primary)" HorizontalAlignment="Left" Margin="190,133,0,0" VerticalAlignment="Top" Width="175" Height="335">
             <Grid HorizontalAlignment="Left" Height="315" Margin="10,10,-3.4,-12.2" VerticalAlignment="Top" Width="155">
-                <Button x:Name="buttonRedHigh1"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBF000A"/>
-                <Button x:Name="buttonRedMed1"  HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE00112"/>
-                <Button x:Name="buttonRedLow1"  HorizontalAlignment="Left" Margin="68,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE7492C"/>
-                <Button x:Name="buttonRedLight1"  HorizontalAlignment="Left" Margin="97,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFEE835D"/>
-                <Button x:Name="buttonOrangeHigh1"  HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFC45500"/>
-                <Button x:Name="buttonOrangeMed1"  HorizontalAlignment="Left" Margin="39,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF29300"/>
-                <Button x:Name="buttonOrangeLow1"  HorizontalAlignment="Left" Margin="68,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF6AA3C"/>
-                <Button x:Name="buttonOrangeLight1"  HorizontalAlignment="Left" Margin="97,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF9C06F"/>
-                <Button x:Name="buttonYellowHigh1"  HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFD6C700"/>
-                <Button x:Name="buttonYellowMed1"  HorizontalAlignment="Left" Margin="39,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFFF100"/>
-                <Button x:Name="buttonYellowLow1"  HorizontalAlignment="Left" Margin="68,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFEF67B"/>
-                <Button x:Name="buttonYellowLight1"  HorizontalAlignment="Left" Margin="97,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFFF9B1"/>
-                <Button x:Name="buttonGreenHigh1"  HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF6BA01B"/>
-                <Button x:Name="buttonGreenMed1"  HorizontalAlignment="Left" Margin="39,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF85C024"/>
-                <Button x:Name="buttonGreenLow1"  HorizontalAlignment="Left" Margin="68,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFA2CC4F"/>
-                <Button x:Name="buttonGreenLight1"  HorizontalAlignment="Left" Margin="97,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBAD87B"/>
-                <Button x:Name="buttonSkyHigh1"  HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF008CBC"/>
-                <Button x:Name="buttonSkyMed1"  HorizontalAlignment="Left" Margin="39,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF21B5E5"/>
-                <Button x:Name="buttonSkyLow1"  HorizontalAlignment="Left" Margin="68,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF66C2EE"/>
-                <Button x:Name="buttonSkyLight1"  HorizontalAlignment="Left" Margin="97,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF87C9ED"/>
-                <Button x:Name="buttonBlueHigh1"  HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF00347F"/>
-                <Button x:Name="buttonBlueMed1"  HorizontalAlignment="Left" Margin="39,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF00529F"/>
-                <Button x:Name="buttonBlueLow1"  HorizontalAlignment="Left" Margin="68,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF2F62A4"/>
-                <Button x:Name="buttonBlueLight1"  HorizontalAlignment="Left" Margin="97,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF647EB5"/>
-                <Button x:Name="buttonPurpleHigh1"  HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF3B0F6C"/>
-                <Button x:Name="buttonPurpleMed1"  HorizontalAlignment="Left" Margin="39,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF67187C"/>
-                <Button x:Name="buttonPurpleLow1"  HorizontalAlignment="Left" Margin="68,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF824798"/>
-                <Button x:Name="buttonPurpleLight1"  HorizontalAlignment="Left" Margin="97,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF9E73B0"/>
-                <Button x:Name="buttonDark1"  HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="Black"/>
-                <Button x:Name="buttonLight1"  HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}"/>
+                <Button x:Name="ButtonRedHighMiddle" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBF000A" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonRedMedMiddle" HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE00112" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonRedLowMiddle" HorizontalAlignment="Left" Margin="68,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE7492C" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonRedLightMiddle" HorizontalAlignment="Left" Margin="97,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFEE835D" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOrangeHighMiddle" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFC45500" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOrangeMedMiddle" HorizontalAlignment="Left" Margin="39,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF29300" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOrangeLowMiddle" HorizontalAlignment="Left" Margin="68,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF6AA3C" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOrangeLightMiddle" HorizontalAlignment="Left" Margin="97,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF9C06F" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonYellowHighMiddle" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFD6C700" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonYellowMedMiddle" HorizontalAlignment="Left" Margin="39,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFFF100" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonYellowLowMiddle" HorizontalAlignment="Left" Margin="68,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFEF67B" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonYellowLightMiddle" HorizontalAlignment="Left" Margin="97,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFFF9B1" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonGreenHighMiddle" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF6BA01B" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonGreenMedMiddle" HorizontalAlignment="Left" Margin="39,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF85C024" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonGreenLowMiddle" HorizontalAlignment="Left" Margin="68,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFA2CC4F" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonGreenLightMiddle" HorizontalAlignment="Left" Margin="97,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBAD87B" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonSkyHighMiddle" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF008CBC" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonSkyMedMiddle" HorizontalAlignment="Left" Margin="39,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF21B5E5" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonSkyLowMiddle" HorizontalAlignment="Left" Margin="68,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF66C2EE" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonSkyLightMiddle" HorizontalAlignment="Left" Margin="97,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF87C9ED" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonBlueHighMiddle" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF00347F" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonBlueMedMiddle" HorizontalAlignment="Left" Margin="39,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF00529F" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonBlueLowMiddle" HorizontalAlignment="Left" Margin="68,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF2F62A4" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonBlueLightMiddle" HorizontalAlignment="Left" Margin="97,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF647EB5" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPurpleHighMiddle" HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF3B0F6C" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPurpleMedMiddle" HorizontalAlignment="Left" Margin="39,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF67187C" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPurpleLowMiddle" HorizontalAlignment="Left" Margin="68,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF824798" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPurpleLightMiddle" HorizontalAlignment="Left" Margin="97,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF9E73B0" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonDarkMiddle" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="Black" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonLightMiddle" HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPageMiddle" Content="Secondary color" HorizontalAlignment="Left" Margin="39,285,0,0" VerticalAlignment="Top" Width="106"  Click="OnPageChanged" Visibility="Hidden"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBoxRight" Header="Right" HorizontalAlignment="Left" Margin="370,133,0,0" VerticalAlignment="Top" Width="175" Height="335">
+        <GroupBox x:Name="GroupBoxRight" Header="Right (primary)" HorizontalAlignment="Left" Margin="370,133,0,0" VerticalAlignment="Top" Width="175" Height="335">
             <Grid HorizontalAlignment="Left" Height="315" Margin="10,10,-3.4,-12.2" VerticalAlignment="Top" Width="155">
-                <Button x:Name="buttonRedHigh2"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBF000A"/>
-                <Button x:Name="buttonRedMed2"  HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE00112"/>
-                <Button x:Name="buttonRedLow2"  HorizontalAlignment="Left" Margin="68,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE7492C"/>
-                <Button x:Name="buttonRedLight2"  HorizontalAlignment="Left" Margin="97,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFEE835D"/>
-                <Button x:Name="buttonOrangeHigh2"  HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFC45500"/>
-                <Button x:Name="buttonOrangeMed2"  HorizontalAlignment="Left" Margin="39,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF29300"/>
-                <Button x:Name="buttonOrangeLow2"  HorizontalAlignment="Left" Margin="68,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF6AA3C"/>
-                <Button x:Name="buttonOrangeLight2"  HorizontalAlignment="Left" Margin="97,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF9C06F"/>
-                <Button x:Name="buttonYellowHigh2"  HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFD6C700"/>
-                <Button x:Name="buttonYellowMed2"  HorizontalAlignment="Left" Margin="39,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFFF100"/>
-                <Button x:Name="buttonYellowLow2"  HorizontalAlignment="Left" Margin="68,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFEF67B"/>
-                <Button x:Name="buttonYellowLight2"  HorizontalAlignment="Left" Margin="97,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFFF9B1"/>
-                <Button x:Name="buttonGreenHigh2"  HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF6BA01B"/>
-                <Button x:Name="buttonGreenMed2"  HorizontalAlignment="Left" Margin="39,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF85C024"/>
-                <Button x:Name="buttonGreenLow2"  HorizontalAlignment="Left" Margin="68,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFA2CC4F"/>
-                <Button x:Name="buttonGreenLight2"  HorizontalAlignment="Left" Margin="97,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBAD87B"/>
-                <Button x:Name="buttonSkyHigh2"  HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF008CBC"/>
-                <Button x:Name="buttonSkyMed2"  HorizontalAlignment="Left" Margin="39,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF21B5E5"/>
-                <Button x:Name="buttonSkyLow2"  HorizontalAlignment="Left" Margin="68,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF66C2EE"/>
-                <Button x:Name="buttonSkyLight2"  HorizontalAlignment="Left" Margin="97,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF87C9ED"/>
-                <Button x:Name="buttonBlueHigh2"  HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF00347F"/>
-                <Button x:Name="buttonBlueMed2"  HorizontalAlignment="Left" Margin="39,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF00529F"/>
-                <Button x:Name="buttonBlueLow2"  HorizontalAlignment="Left" Margin="68,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF2F62A4"/>
-                <Button x:Name="buttonBlueLight2"  HorizontalAlignment="Left" Margin="97,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF647EB5"/>
-                <Button x:Name="buttonPurpleHigh2"  HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF3B0F6C"/>
-                <Button x:Name="buttonPurpleMed2"  HorizontalAlignment="Left" Margin="39,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF67187C"/>
-                <Button x:Name="buttonPurpleLow2"  HorizontalAlignment="Left" Margin="68,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF824798"/>
-                <Button x:Name="buttonPurpleLight2"  HorizontalAlignment="Left" Margin="97,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF9E73B0"/>
-                <Button x:Name="buttonDark2"  HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="Black"/>
-                <Button x:Name="buttonLight2"  HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}"/>
+                <Button x:Name="ButtonRedHighRight" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBF000A" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonRedMedRight" HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE00112" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonRedLowRight" HorizontalAlignment="Left" Margin="68,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFE7492C" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonRedLightRight" HorizontalAlignment="Left" Margin="97,10,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFEE835D" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOrangeHighRight" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFC45500" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOrangeMedRight" HorizontalAlignment="Left" Margin="39,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF29300" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOrangeLowRight" HorizontalAlignment="Left" Margin="68,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF6AA3C" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOrangeLightRight" HorizontalAlignment="Left" Margin="97,39,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFF9C06F" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonYellowHighRight" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFD6C700" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonYellowMedRight" HorizontalAlignment="Left" Margin="39,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFFF100" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonYellowLowRight" HorizontalAlignment="Left" Margin="68,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFEF67B" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonYellowLightRight" HorizontalAlignment="Left" Margin="97,68,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFFFF9B1" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonGreenHighRight" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF6BA01B" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonGreenMedRight" HorizontalAlignment="Left" Margin="39,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF85C024" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonGreenLowRight" HorizontalAlignment="Left" Margin="68,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFA2CC4F" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonGreenLightRight" HorizontalAlignment="Left" Margin="97,97,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FFBAD87B" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonSkyHighRight" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF008CBC" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonSkyMedRight" HorizontalAlignment="Left" Margin="39,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF21B5E5" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonSkyLowRight" HorizontalAlignment="Left" Margin="68,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF66C2EE" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonSkyLightRight" HorizontalAlignment="Left" Margin="97,126,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF87C9ED" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonBlueHighRight" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF00347F" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonBlueMedRight" HorizontalAlignment="Left" Margin="39,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF00529F" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonBlueLowRight" HorizontalAlignment="Left" Margin="68,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF2F62A4" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonBlueLightRight" HorizontalAlignment="Left" Margin="97,155,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF647EB5" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPurpleHighRight" HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF3B0F6C" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPurpleMedRight" HorizontalAlignment="Left" Margin="39,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF67187C" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPurpleLowRight" HorizontalAlignment="Left" Margin="68,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF824798" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPurpleLightRight" HorizontalAlignment="Left" Margin="97,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF9E73B0" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonDarkRight" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="Black" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonLightRight" HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonPageRight" Content="Secondary color" HorizontalAlignment="Left" Margin="39,285,0,0" VerticalAlignment="Top" Width="106"  Click="OnPageChanged" Visibility="Hidden"/>
             </Grid>
         </GroupBox>
-        <Label x:Name="labelSpeed" Content="Speed:" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.971,0.578"/>
-        <TextBox x:Name="textBoxSpeed" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.121,0.104"/>
+        <Label x:Name="LabelSpeed" Content="Speed:" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.971,0.578" Visibility="Hidden"/>
+        <TextBox x:Name="TextBoxSpeed" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.121,0.104" Visibility="Hidden" PreviewTextInput="NumberValidationTextBox"/>
     </Grid>
 </Window>

@@ -23,7 +23,7 @@ namespace MSI_Keyboard_Manager
 
         public void SetMode(Constants.Modes mode)
         {
-            if (mode == Constants.Modes.Wave || mode == Constants.Modes.DualColor)
+            if (mode == Constants.Modes.Wave || mode == Constants.Modes.DualColor || mode == Constants.Modes.Breathe)
             {
                 throw new ArgumentException("SetMode", nameof(mode));
             }
@@ -36,7 +36,7 @@ namespace MSI_Keyboard_Manager
             Tuple<Constants.Colors, Constants.Colors> middleColors,
             Tuple<Constants.Colors, Constants.Colors> rightColors, int speed)
         {
-            if (mode != Constants.Modes.Wave && mode != Constants.Modes.DualColor)
+            if (mode != Constants.Modes.Wave && mode != Constants.Modes.DualColor && mode != Constants.Modes.Breathe)
             {
                 throw new ArgumentException("SetMode", nameof(mode));
             }
