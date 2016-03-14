@@ -115,6 +115,6 @@
             </Grid>
         </GroupBox>
         <Label x:Name="LabelSpeed" Content="Speed:" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.971,0.578" Visibility="Hidden"/>
-        <TextBox x:Name="TextBoxSpeed" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.121,0.104" Visibility="Hidden" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox x:Name="TextBoxSpeed" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.121,0.104" Visibility="Hidden" PreviewTextInput="NumberValidationTextBox" TextChanged="OnSpeedChanged" Text="5"/>
     </Grid>
 </Window>

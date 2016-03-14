@@ -8,12 +8,14 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace MSI_Keyboard_Manager
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         private HidManager _hidManager;
-        private Constants.Colors[] _leftColors = {Constants.Colors.Off, Constants.Colors.Off, Constants.Colors.Off};
-        private Constants.Colors[] _middleColors = {Constants.Colors.Off, Constants.Colors.Off, Constants.Colors.Off};
-        private Constants.Colors[] _rightColors = {Constants.Colors.Off, Constants.Colors.Off, Constants.Colors.Off};
+        private RegionSetting _leftRegionSetting;
+        private RegionSetting _middleRegionSetting;
+        private RegionSetting _rightRegionSetting;
+        private Constants.Modes _mode = Constants.Modes.Normal;
+        private int _speed;
         private bool[] _isPrimaryPage = {true, true, true};
 
         public MainWindow()
@@ -30,29 +32,83 @@ namespace MSI_Keyboard_Manager
             }
             ComboBoxMode.SelectedIndex = 0;
             ComboBoxMode.SelectionChanged += OnModeChanged;
+
+            _leftRegionSetting = new RegionSetting(Constants.Regions.Left, Constants.Intensities.High, Constants.Colors.Blue, Constants.Colors.Red);
+            _middleRegionSetting = new RegionSetting(Constants.Regions.Middle, Constants.Intensities.High, Constants.Colors.Blue, Constants.Colors.Red);
+            _rightRegionSetting = new RegionSetting(Constants.Regions.Right, Constants.Intensities.High, Constants.Colors.Blue, Constants.Colors.Red);
+
             _hidManager = new HidManager();
+
+            TransferSettingsToKeyboard();
         }
 
         private void ColorButtonClick(object sender, RoutedEventArgs e)
         {
             Constants.Regions region;
+            string buttonName = ((Button)sender).Name;
 
             //Get region according to button name
-            string buttonName = ((Button) sender).Name;
             if (buttonName.Contains("Left")) region = Constants.Regions.Left;
             else if (buttonName.Contains("Middle")) region = Constants.Regions.Middle;
             else region = Constants.Regions.Right;
 
 
+            //Get color
+            Constants.Colors color = Constants.Colors.Off;
+            foreach (string c in Enum.GetNames(typeof(Constants.Colors)))
+            {
+                if (buttonName.Contains(c))
+                {
+                    color = (Constants.Colors) Enum.Parse(typeof(Constants.Colors), c);
+                    break;
+                }
+            }
+
+            //Get intensity
+            Constants.Intensities intensity = Constants.Intensities.High;
+            foreach (string i in Enum.GetNames(typeof(Constants.Intensities)))
+            {
+                if (buttonName.Contains(i))
+                {
+                    intensity = (Constants.Intensities) Enum.Parse(typeof(Constants.Intensities), i);
+                    break;
+                }
+            }
+
+            //Get primary or secondary according to array
+            bool isPrimary = _isPrimaryPage[(int)region - 1];
+
+            //Store it
+            switch (region)
+            {
+                case Constants.Regions.Left:
+                    _leftRegionSetting.Intensity = intensity;
+                    if (isPrimary) _leftRegionSetting.PrimaryColor = color;
+                    else _leftRegionSetting.SecondaryColor = color;
+                    break;
+                case Constants.Regions.Middle:
+                    _middleRegionSetting.Intensity = intensity;
+                    if (isPrimary) _middleRegionSetting.PrimaryColor = color;
+                    else _middleRegionSetting.SecondaryColor = color;
+                    break;
+                case Constants.Regions.Right:
+                    _rightRegionSetting.Intensity = intensity;
+                    if (isPrimary) _rightRegionSetting.PrimaryColor = color;
+                    else _rightRegionSetting.SecondaryColor = color;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            TransferSettingsToKeyboard();
         }
 
         private void OnModeChanged(object sender, SelectionChangedEventArgs e)
         {
-            Constants.Modes mode;
-            if (Enum.TryParse(((ComboBox) sender).SelectedItem.ToString(), out mode))
+            if (Enum.TryParse(((ComboBox) sender).SelectedItem.ToString(), out _mode))
             {
                 //Display speed or not
-                if (mode == Constants.Modes.Normal || mode == Constants.Modes.Gaming || mode == Constants.Modes.Audio)
+                if (_mode == Constants.Modes.Normal || _mode == Constants.Modes.Gaming || _mode == Constants.Modes.Audio)
                 {
                     LabelSpeed.Visibility = Visibility.Hidden;
                     TextBoxSpeed.Visibility = Visibility.Hidden;
@@ -64,7 +120,7 @@ namespace MSI_Keyboard_Manager
                 }
 
                 //Display page button or not
-                if (mode == Constants.Modes.Wave || mode == Constants.Modes.Breathe || mode == Constants.Modes.DualColor)
+                if (_mode == Constants.Modes.Wave || _mode == Constants.Modes.Breathe || _mode == Constants.Modes.DualColor)
                 {
                     ButtonPageLeft.Visibility = Visibility.Visible;
                     ButtonPageMiddle.Visibility = Visibility.Visible;
@@ -77,22 +133,37 @@ namespace MSI_Keyboard_Manager
                     ButtonPageRight.Visibility = Visibility.Hidden;
                 }
 
-                //Display middle and right or not
-                if (mode == Constants.Modes.Gaming)
+                //Display colors or not
+                if (_mode == Constants.Modes.Audio)
                 {
+                    GroupBoxLeft.Visibility = Visibility.Hidden;
+                    GroupBoxMiddle.Visibility = Visibility.Hidden;
+                    GroupBoxRight.Visibility = Visibility.Hidden;
+                }
+                else if (_mode == Constants.Modes.Gaming)
+                {
+                    GroupBoxLeft.Visibility = Visibility.Visible;
                     GroupBoxMiddle.Visibility = Visibility.Hidden;
                     GroupBoxRight.Visibility = Visibility.Hidden;
                 }
                 else
                 {
+                    GroupBoxLeft.Visibility = Visibility.Visible;
                     GroupBoxMiddle.Visibility = Visibility.Visible;
                     GroupBoxRight.Visibility = Visibility.Visible;
                 }
+
+                TransferSettingsToKeyboard();
             }
             else
             {
                 ShowAlert("Invalid mode selected");
             }
+        }
+
+        private void TransferSettingsToKeyboard()
+        {
+            _hidManager.SetMode(_mode, _leftRegionSetting,_middleRegionSetting, _rightRegionSetting, _speed);
         }
 
         private void ShowAlert(string message)
@@ -150,6 +221,15 @@ namespace MSI_Keyboard_Manager
                     GroupBoxRight.Header = "Right (secondary)";
                     ButtonPageRight.Content = "Primary color";
                 }
+            }
+        }
+
+        private void OnSpeedChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!int.TryParse(TextBoxSpeed.Text, out _speed))
+            {
+                _speed = 5;
+                TransferSettingsToKeyboard();
             }
         }
     }
