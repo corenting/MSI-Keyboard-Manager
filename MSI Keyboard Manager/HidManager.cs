@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Windows;
 using HidSharp;
 
 namespace MSI_Keyboard_Manager
@@ -10,9 +11,17 @@ namespace MSI_Keyboard_Manager
 
         public HidManager()
         {
-            var loader = new HidDeviceLoader();
-            var device = loader.GetDevices(0x1770, 0xff00).First();
-            device.TryOpen(out _stream);
+            try
+            {
+                var loader = new HidDeviceLoader();
+                var device = loader.GetDevices(0x1770, 0xff00).First();
+                device.TryOpen(out _stream);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error while loading the USB device, the program will now quit.", "Error !", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Environment.Exit(1);
+            }
         }
 
         public void SetMode(Constants.Modes mode, RegionSetting left, RegionSetting middle, RegionSetting right, int speed)
