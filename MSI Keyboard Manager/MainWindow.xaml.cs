@@ -42,6 +42,7 @@ namespace MSI_Keyboard_Manager
             TransferSettingsToKeyboard();
         }
 
+        #region Events
         private void ColorButtonClick(object sender, RoutedEventArgs e)
         {
             Constants.Regions region;
@@ -161,25 +162,9 @@ namespace MSI_Keyboard_Manager
             }
         }
 
-        private void TransferSettingsToKeyboard()
-        {
-            _hidManager.SetMode(_mode, _leftRegionSetting,_middleRegionSetting, _rightRegionSetting, _speed);
-        }
-
-        private void ShowAlert(string message)
-        {
-            MessageBox.Show(message, "Error !", MessageBoxButton.OK, MessageBoxImage.Warning);
-        }
-
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
         private void OnPageChanged(object sender, RoutedEventArgs e)
         {
-            string name = ((Button) sender).Name;
+            string name = ((Button)sender).Name;
             if (name.Contains("Left"))
             {
                 _isPrimaryPage[0] = !_isPrimaryPage[0];
@@ -232,5 +217,27 @@ namespace MSI_Keyboard_Manager
                 TransferSettingsToKeyboard();
             }
         }
+
+        #endregion
+
+        #region Utils & misc
+
+        private void ShowAlert(string message)
+        {
+            MessageBox.Show(message, "Error !", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        private void TransferSettingsToKeyboard()
+        {
+            _hidManager.SetMode(_mode, _leftRegionSetting, _middleRegionSetting, _rightRegionSetting, _speed);
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        #endregion
     }
+
 }

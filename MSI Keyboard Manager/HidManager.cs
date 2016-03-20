@@ -17,27 +17,29 @@ namespace MSI_Keyboard_Manager
 
         public void SetMode(Constants.Modes mode, RegionSetting left, RegionSetting middle, RegionSetting right, int speed)
         {
-            if (mode == Constants.Modes.Normal)
+            switch (mode)
             {
-                SendCommand(66, (byte) left.Region, (byte) left.PrimaryColor, (byte) left.Intensity);
-                SendCommand(66, (byte) middle.Region, (byte) middle.PrimaryColor, (byte) middle.Intensity);
-                SendCommand(66, (byte) right.Region, (byte) right.PrimaryColor, (byte) right.Intensity);
-            }
-            else if (mode == Constants.Modes.Gaming)
-            {
-                SendCommand(66, (byte)left.Region, (byte)left.PrimaryColor, (byte)left.Intensity);
-            }
-            else if (mode == Constants.Modes.Wave || mode == Constants.Modes.DualColor || mode == Constants.Modes.Breathe)
-            {
-                SendCommandForDualModeRegion(Constants.Regions.Left, (byte) left.PrimaryColor,
-                    (byte) left.SecondaryColor,
-                    (byte) left.Intensity, (byte) speed);
-                SendCommandForDualModeRegion(Constants.Regions.Middle, (byte) middle.PrimaryColor,
-                    (byte) middle.SecondaryColor,
-                    (byte) middle.Intensity, (byte) speed);
-                SendCommandForDualModeRegion(Constants.Regions.Right, (byte) right.PrimaryColor,
-                    (byte) right.SecondaryColor,
-                    (byte) right.Intensity, (byte) speed);
+                case Constants.Modes.Normal:
+                    SendCommand(66, (byte) left.Region, (byte) left.PrimaryColor, (byte) left.Intensity);
+                    SendCommand(66, (byte) middle.Region, (byte) middle.PrimaryColor, (byte) middle.Intensity);
+                    SendCommand(66, (byte) right.Region, (byte) right.PrimaryColor, (byte) right.Intensity);
+                    break;
+                case Constants.Modes.Gaming:
+                    SendCommand(66, (byte)left.Region, (byte)left.PrimaryColor, (byte)left.Intensity);
+                    break;
+                case Constants.Modes.Wave:
+                case Constants.Modes.DualColor:
+                case Constants.Modes.Breathe:
+                    SendCommandForDualModeRegion(Constants.Regions.Left, (byte) left.PrimaryColor,
+                        (byte) left.SecondaryColor,
+                        (byte) left.Intensity, (byte) speed);
+                    SendCommandForDualModeRegion(Constants.Regions.Middle, (byte) middle.PrimaryColor,
+                        (byte) middle.SecondaryColor,
+                        (byte) middle.Intensity, (byte) speed);
+                    SendCommandForDualModeRegion(Constants.Regions.Right, (byte) right.PrimaryColor,
+                        (byte) right.SecondaryColor,
+                        (byte) right.Intensity, (byte) speed);
+                    break;
             }
             SendCommand(65, (byte) mode, 0, 0);
         }
