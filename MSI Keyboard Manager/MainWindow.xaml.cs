@@ -106,6 +106,7 @@ namespace MSI_Keyboard_Manager
 
         private void OnModeChanged(object sender, SelectionChangedEventArgs e)
         {
+            ResetPagesAndButtons();
             if (Enum.TryParse(((ComboBox) sender).SelectedItem.ToString(), out _mode))
             {
                 //Display speed or not
@@ -221,6 +222,17 @@ namespace MSI_Keyboard_Manager
         #endregion
 
         #region Utils & misc
+
+        private void ResetPagesAndButtons()
+        {
+            _isPrimaryPage = new[]{ true, true, true};
+            GroupBoxLeft.Header = "Left (primary)";
+            ButtonPageLeft.Content = "Secondary color";
+            GroupBoxMiddle.Header = "Middle (primary)";
+            ButtonPageMiddle.Content = "Secondary color";
+            GroupBoxRight.Header = "Right (primary)";
+            ButtonPageRight.Content = "Secondary color";
+        }
 
         private void ShowAlert(string message)
         {
