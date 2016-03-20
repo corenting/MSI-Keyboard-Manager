@@ -5,8 +5,9 @@ MSI Keyboard Manager is an alternative (Windows-only) to the MSI KLM software to
 See the release section for a compiled binary (.NET framework 4.5.2 needed). The HIDSharp.dll file must be located next to the executable for the program to work.
 
 ## Credits
-### HIDSharp
-This program uses [HIDSharp](http://www.zer7.com/software/hidsharp) by James F. Bellinger to communicate with the keyboard, which is licensed under the following license :
+* [msi-klm](https://github.com/AlexanderKlishin/msi-klm) by Alexander Klishin and [msi-keyboard
+](https://github.com/stevelacy/msi-keyboard) by Steve Lacy for the protocol used to communicate with the keyboard.
+* [HIDSharp](http://www.zer7.com/software/hidsharp) by James F. Bellinger to communicate with the keyboard, which is licensed under the following license :
 ```
 HIDSharp
 Copyright 2010-2013 James F. Bellinger <http://www.zer7.com/software/hidsharp>
