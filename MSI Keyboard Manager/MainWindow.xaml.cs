@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,11 +20,6 @@ namespace MSI_Keyboard_Manager
         private int _speed;
         private bool[] _isPrimaryPage = {true, true, true};
 
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-
         private void MainWindow_OnInitialized(object sender, EventArgs e)
         {
             //Setup the comboBox with the modes from the enum
@@ -33,20 +30,46 @@ namespace MSI_Keyboard_Manager
             ComboBoxMode.SelectedIndex = 0;
             ComboBoxMode.SelectionChanged += OnModeChanged;
 
-            _leftRegionSetting = new RegionSetting(Constants.Regions.Left, Constants.Intensities.High, Constants.Colors.Blue, Constants.Colors.Red);
-            _middleRegionSetting = new RegionSetting(Constants.Regions.Middle, Constants.Intensities.High, Constants.Colors.Blue, Constants.Colors.Red);
-            _rightRegionSetting = new RegionSetting(Constants.Regions.Right, Constants.Intensities.High, Constants.Colors.Blue, Constants.Colors.Red);
+            _leftRegionSetting = new RegionSetting(Constants.Regions.Left, Constants.Intensities.High,
+                Constants.Colors.Blue, Constants.Colors.Red);
+            _middleRegionSetting = new RegionSetting(Constants.Regions.Middle, Constants.Intensities.High,
+                Constants.Colors.Blue, Constants.Colors.Red);
+            _rightRegionSetting = new RegionSetting(Constants.Regions.Right, Constants.Intensities.High,
+                Constants.Colors.Blue, Constants.Colors.Red);
 
             _hidManager = new HidManager();
 
-            TransferSettingsToKeyboard();
+            //System tray icon setup
+            TrayCommand tray = new TrayCommand(this);
+            NotifyIcon.LeftClickCommand = tray;
+            NotifyIcon.DoubleClickCommand = tray;
         }
 
         #region Events
+
+        private void TrayOpenClick(object sender, RoutedEventArgs e)
+        {
+            NotifyIcon.Visibility = Visibility.Collapsed;
+            Visibility = Visibility.Visible;
+        }
+
+        private void TrayQuitClick(object sender, RoutedEventArgs e)
+        {
+            NotifyIcon.Dispose();
+            Application.Current.Shutdown();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            e.Cancel = true;
+            NotifyIcon.Visibility = Visibility.Visible;
+            Hide();
+        }
+
         private void ColorButtonClick(object sender, RoutedEventArgs e)
         {
             Constants.Regions region;
-            string buttonName = ((Button)sender).Name;
+            string buttonName = ((Button) sender).Name;
 
             //Get region according to button name
             if (buttonName.Contains("Left")) region = Constants.Regions.Left;
@@ -55,29 +78,17 @@ namespace MSI_Keyboard_Manager
 
 
             //Get color
-            Constants.Colors color = Constants.Colors.Off;
-            foreach (string c in Enum.GetNames(typeof(Constants.Colors)))
-            {
-                if (buttonName.Contains(c))
-                {
-                    color = (Constants.Colors) Enum.Parse(typeof(Constants.Colors), c);
-                    break;
-                }
-            }
+            Constants.Colors color = (from c in Enum.GetNames(typeof (Constants.Colors))
+                where buttonName.Contains(c)
+                select (Constants.Colors) Enum.Parse(typeof (Constants.Colors), c)).FirstOrDefault();
 
             //Get intensity
-            Constants.Intensities intensity = Constants.Intensities.High;
-            foreach (string i in Enum.GetNames(typeof(Constants.Intensities)))
-            {
-                if (buttonName.Contains(i))
-                {
-                    intensity = (Constants.Intensities) Enum.Parse(typeof(Constants.Intensities), i);
-                    break;
-                }
-            }
+            Constants.Intensities intensity = (from i in Enum.GetNames(typeof (Constants.Intensities))
+                where buttonName.Contains(i)
+                select (Constants.Intensities) Enum.Parse(typeof (Constants.Intensities), i)).FirstOrDefault();
 
             //Get primary or secondary according to array
-            bool isPrimary = _isPrimaryPage[(int)region - 1];
+            bool isPrimary = _isPrimaryPage[(int) region - 1];
 
             //Store it
             switch (region)
@@ -122,7 +133,8 @@ namespace MSI_Keyboard_Manager
                 }
 
                 //Display page button or not
-                if (_mode == Constants.Modes.Wave || _mode == Constants.Modes.Breathe || _mode == Constants.Modes.DualColor)
+                if (_mode == Constants.Modes.Wave || _mode == Constants.Modes.Breathe ||
+                    _mode == Constants.Modes.DualColor)
                 {
                     ButtonPageLeft.Visibility = Visibility.Visible;
                     ButtonPageMiddle.Visibility = Visibility.Visible;
@@ -165,7 +177,7 @@ namespace MSI_Keyboard_Manager
 
         private void OnPageChanged(object sender, RoutedEventArgs e)
         {
-            string name = ((Button)sender).Name;
+            string name = ((Button) sender).Name;
             if (name.Contains("Left"))
             {
                 _isPrimaryPage[0] = !_isPrimaryPage[0];
@@ -212,11 +224,9 @@ namespace MSI_Keyboard_Manager
 
         private void OnSpeedChanged(object sender, TextChangedEventArgs e)
         {
-            if (!int.TryParse(TextBoxSpeed.Text, out _speed))
-            {
-                _speed = 5;
-                TransferSettingsToKeyboard();
-            }
+            if (int.TryParse(TextBoxSpeed.Text, out _speed)) return;
+            _speed = 5;
+            TransferSettingsToKeyboard();
         }
 
         #endregion
@@ -225,7 +235,7 @@ namespace MSI_Keyboard_Manager
 
         private void ResetPagesAndButtons()
         {
-            _isPrimaryPage = new[]{ true, true, true};
+            _isPrimaryPage = new[] {true, true, true};
             GroupBoxLeft.Header = "Left (primary)";
             ButtonPageLeft.Content = "Secondary color";
             GroupBoxMiddle.Header = "Middle (primary)";
@@ -249,7 +259,7 @@ namespace MSI_Keyboard_Manager
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
         #endregion
     }
-
 }

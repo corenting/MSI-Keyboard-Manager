@@ -17,7 +17,7 @@ namespace MSI_Keyboard_Manager
                 var device = loader.GetDevices(0x1770, 0xff00).First();
                 device.TryOpen(out _stream);
             }
-            catch (Exception e)
+            catch
             {
                 MessageBox.Show("Error while loading the USB device, the program will now quit.", "Error !", MessageBoxButton.OK, MessageBoxImage.Warning);
                 Environment.Exit(1);
