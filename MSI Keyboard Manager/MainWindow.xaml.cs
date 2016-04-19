@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -38,33 +37,9 @@ namespace MSI_Keyboard_Manager
                 Constants.Colors.Blue, Constants.Colors.Red);
 
             _hidManager = new HidManager();
-
-            //System tray icon setup
-            TrayCommand tray = new TrayCommand(this);
-            NotifyIcon.LeftClickCommand = tray;
-            NotifyIcon.DoubleClickCommand = tray;
         }
 
         #region Events
-
-        private void TrayOpenClick(object sender, RoutedEventArgs e)
-        {
-            NotifyIcon.Visibility = Visibility.Collapsed;
-            Visibility = Visibility.Visible;
-        }
-
-        private void TrayQuitClick(object sender, RoutedEventArgs e)
-        {
-            NotifyIcon.Dispose();
-            Application.Current.Shutdown();
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            e.Cancel = true;
-            NotifyIcon.Visibility = Visibility.Visible;
-            Hide();
-        }
 
         private void ColorButtonClick(object sender, RoutedEventArgs e)
         {

@@ -41,10 +41,6 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="HidSharp, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HidSharp.1.5\lib\net35\HidSharp.dll</HintPath>
       <Private>True</Private>
@@ -72,7 +68,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="RegionSetting.cs" />
-    <Compile Include="TrayCommand.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
