@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Initialized="MainWindow_OnInitialized"
-        Title="MSI Keyboard Manager" Height="507.2" Width="562" ResizeMode="NoResize" Icon="logo.ico">
+        Title="MSI Keyboard Manager" Height="507.2" Width="562" ResizeMode="NoResize" Icon="logo.ico" Loaded="Window_Loaded">
 
     <Grid>
         <Label x:Name="LabelMode" Content="Mode:" Margin="10,10,0,0" HorizontalAlignment="Left" Width="43" RenderTransformOrigin="0.513,1.405" Height="26" VerticalAlignment="Top"/>
@@ -40,8 +40,8 @@
                 <Button x:Name="ButtonPurpleMedLeft" HorizontalAlignment="Left" Margin="39,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF67187C" Click="ColorButtonClick"/>
                 <Button x:Name="ButtonPurpleLowLeft" HorizontalAlignment="Left" Margin="68,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF824798" Click="ColorButtonClick"/>
                 <Button x:Name="ButtonPurpleLightLeft" HorizontalAlignment="Left" Margin="97,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF9E73B0" Click="ColorButtonClick"/>
-                <Button x:Name="ButtonDarkLeft" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="Black" Click="ColorButtonClick"/>
-                <Button x:Name="ButtonLightLeft" HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOffLeft" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="Black" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonWhiteLeft" HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}" Click="ColorButtonClick"/>
                 <Button x:Name="ButtonPageLeft" Content="Secondary color" HorizontalAlignment="Left" Margin="39,285,0,0" VerticalAlignment="Top" Width="106" Click="OnPageChanged" Visibility="Hidden"/>
             </Grid>
         </GroupBox>
@@ -75,8 +75,8 @@
                 <Button x:Name="ButtonPurpleMedMiddle" HorizontalAlignment="Left" Margin="39,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF67187C" Click="ColorButtonClick"/>
                 <Button x:Name="ButtonPurpleLowMiddle" HorizontalAlignment="Left" Margin="68,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF824798" Click="ColorButtonClick"/>
                 <Button x:Name="ButtonPurpleLightMiddle" HorizontalAlignment="Left" Margin="97,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF9E73B0" Click="ColorButtonClick"/>
-                <Button x:Name="ButtonDarkMiddle" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="Black" Click="ColorButtonClick"/>
-                <Button x:Name="ButtonLightMiddle" HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOffMiddle" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="Black" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonWhiteMiddle" HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}" Click="ColorButtonClick"/>
                 <Button x:Name="ButtonPageMiddle" Content="Secondary color" HorizontalAlignment="Left" Margin="39,285,0,0" VerticalAlignment="Top" Width="106"  Click="OnPageChanged" Visibility="Hidden"/>
             </Grid>
         </GroupBox>
@@ -110,8 +110,8 @@
                 <Button x:Name="ButtonPurpleMedRight" HorizontalAlignment="Left" Margin="39,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF67187C" Click="ColorButtonClick"/>
                 <Button x:Name="ButtonPurpleLowRight" HorizontalAlignment="Left" Margin="68,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF824798" Click="ColorButtonClick"/>
                 <Button x:Name="ButtonPurpleLightRight" HorizontalAlignment="Left" Margin="97,184,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="#FF9E73B0" Click="ColorButtonClick"/>
-                <Button x:Name="ButtonDarkRight" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="Black" Click="ColorButtonClick"/>
-                <Button x:Name="ButtonLightRight" HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonOffRight" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="Black" Click="ColorButtonClick"/>
+                <Button x:Name="ButtonWhiteRight" HorizontalAlignment="Left" Margin="39,213,0,0" VerticalAlignment="Top" Height="24" Width="24" Background="{x:Null}" Click="ColorButtonClick"/>
                 <Button x:Name="ButtonPageRight" Content="Secondary color" HorizontalAlignment="Left" Margin="39,285,0,0" VerticalAlignment="Top" Width="106"  Click="OnPageChanged" Visibility="Hidden"/>
             </Grid>
         </GroupBox>

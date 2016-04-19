@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ComboBox = System.Windows.Controls.ComboBox;
-using MessageBox = System.Windows.MessageBox;
 
 namespace MSI_Keyboard_Manager
 {
@@ -37,6 +36,12 @@ namespace MSI_Keyboard_Manager
                 Constants.Colors.Blue, Constants.Colors.Red);
 
             _hidManager = new HidManager();
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetSelectedButtons();
         }
 
         #region Events
@@ -86,8 +91,8 @@ namespace MSI_Keyboard_Manager
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
             TransferSettingsToKeyboard();
+            SetSelectedButtons();
         }
 
         private void OnModeChanged(object sender, SelectionChangedEventArgs e)
@@ -123,30 +128,31 @@ namespace MSI_Keyboard_Manager
                 }
 
                 //Display colors or not
-                if (_mode == Constants.Modes.Audio)
+                switch (_mode)
                 {
-                    GroupBoxLeft.Visibility = Visibility.Hidden;
-                    GroupBoxMiddle.Visibility = Visibility.Hidden;
-                    GroupBoxRight.Visibility = Visibility.Hidden;
-                }
-                else if (_mode == Constants.Modes.Gaming)
-                {
-                    GroupBoxLeft.Visibility = Visibility.Visible;
-                    GroupBoxMiddle.Visibility = Visibility.Hidden;
-                    GroupBoxRight.Visibility = Visibility.Hidden;
-                }
-                else
-                {
-                    GroupBoxLeft.Visibility = Visibility.Visible;
-                    GroupBoxMiddle.Visibility = Visibility.Visible;
-                    GroupBoxRight.Visibility = Visibility.Visible;
+                    case Constants.Modes.Audio:
+                        GroupBoxLeft.Visibility = Visibility.Hidden;
+                        GroupBoxMiddle.Visibility = Visibility.Hidden;
+                        GroupBoxRight.Visibility = Visibility.Hidden;
+                        break;
+                    case Constants.Modes.Gaming:
+                        GroupBoxLeft.Visibility = Visibility.Visible;
+                        GroupBoxMiddle.Visibility = Visibility.Hidden;
+                        GroupBoxRight.Visibility = Visibility.Hidden;
+                        break;
+                    default:
+                        GroupBoxLeft.Visibility = Visibility.Visible;
+                        GroupBoxMiddle.Visibility = Visibility.Visible;
+                        GroupBoxRight.Visibility = Visibility.Visible;
+                        break;
                 }
 
                 TransferSettingsToKeyboard();
+                SetSelectedButtons();
             }
             else
             {
-                ShowAlert("Invalid mode selected");
+                Utils.ShowAlert("Invalid mode selected");
             }
         }
 
@@ -195,6 +201,7 @@ namespace MSI_Keyboard_Manager
                     ButtonPageRight.Content = "Primary color";
                 }
             }
+            SetSelectedButtons();
         }
 
         private void OnSpeedChanged(object sender, TextChangedEventArgs e)
@@ -208,6 +215,26 @@ namespace MSI_Keyboard_Manager
 
         #region Utils & misc
 
+        private void SetSelectedButtons()
+        {
+            String leftName = Utils.GetButtonName(_isPrimaryPage[0], _leftRegionSetting);
+            String middleName = Utils.GetButtonName(_isPrimaryPage[1], _middleRegionSetting);
+            String rightName = Utils.GetButtonName(_isPrimaryPage[2], _rightRegionSetting);
+
+            foreach (Button button in Utils.FindVisualChildren<Button>(this))
+            {
+                if (button.Name.Contains("Page")) continue;
+                if (button.Name.Equals(leftName) || button.Name.Equals(middleName) || button.Name.Equals(rightName))
+                {
+                    button.Content = "X";
+                }
+                else
+                {
+                    button.Content = "";
+                }
+            }
+        }
+
         private void ResetPagesAndButtons()
         {
             _isPrimaryPage = new[] {true, true, true};
@@ -217,11 +244,6 @@ namespace MSI_Keyboard_Manager
             ButtonPageMiddle.Content = "Secondary color";
             GroupBoxRight.Header = "Right (primary)";
             ButtonPageRight.Content = "Secondary color";
-        }
-
-        private void ShowAlert(string message)
-        {
-            MessageBox.Show(message, "Error !", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void TransferSettingsToKeyboard()

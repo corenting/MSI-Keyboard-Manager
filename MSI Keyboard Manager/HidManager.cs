@@ -19,12 +19,14 @@ namespace MSI_Keyboard_Manager
             }
             catch
             {
-                MessageBox.Show("Error while loading the USB device, the program will now quit.", "Error !", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Error while loading the USB device, the program will now quit.", "Error !",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
                 Environment.Exit(1);
             }
         }
 
-        public void SetMode(Constants.Modes mode, RegionSetting left, RegionSetting middle, RegionSetting right, int speed)
+        public void SetMode(Constants.Modes mode, RegionSetting left, RegionSetting middle, RegionSetting right,
+            int speed)
         {
             switch (mode)
             {
@@ -34,7 +36,7 @@ namespace MSI_Keyboard_Manager
                     SendCommand(66, (byte) right.Region, (byte) right.PrimaryColor, (byte) right.Intensity);
                     break;
                 case Constants.Modes.Gaming:
-                    SendCommand(66, (byte)left.Region, (byte)left.PrimaryColor, (byte)left.Intensity);
+                    SendCommand(66, (byte) left.Region, (byte) left.PrimaryColor, (byte) left.Intensity);
                     break;
                 case Constants.Modes.Wave:
                 case Constants.Modes.DualColor:
