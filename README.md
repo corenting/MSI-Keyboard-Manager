@@ -1,3 +1,7 @@
+**This application is not developed anymore and has been archived.**
+
+**Feel free to fork it if you want to update it 🙂**
+
 # MSI Keyboard Manager
 MSI Keyboard Manager is an alternative (Windows-only) to the MSI KLM software to control the color of the Steelseries keyboards found in MSI laptops. It is licensed under the MIT license.
 
